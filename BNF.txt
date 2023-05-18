@@ -7,14 +7,13 @@
 
 <create> ::= CREATE TABLE <name> ( {<name> <data_type> {<constraint>} {,<name> <data_type> {<constraint>}} {<foreign_key>})
 <data_type> ::= <varchar_type> | FLOAT | INT | BOOL | DOUBLE
-<varchar_type> ::= VARCHAR ( <size> )
-<constraint> ::= PRIMARY KEY | UNIQUE | NOT NULL | <default>
-<default> ::= DEFAULT <value>
+<varchar_type> ::= VARCHAR ( <int> )
+<constraint> ::= PRIMARY KEY | UNIQUE | NOT NULL | DEFAULT <value>
 <foreign_key> ::= FOREIGN KEY (<name>) REFERENCES <name> (<name>)
 
 
-<select> ::= SELECT * <from> [<where>] | SELECT <name> {,<name>} <from> [<where>]
-<where> ::= WHERE <expression>
+<select> ::= SELECT (* | SELECT <name> {,<name>}) <from> [<where>]
+<where> ::= WHERE <prior6>
 <from> ::= FROM <name> [<join>]
 <join> ::= INNER|LEFT|RIGHT JOIN <name> ON <name> = <name>
 
@@ -30,7 +29,7 @@
 <bool> ::= true | false
 <int> ::= <int>
 <float> ::= <float>
-<varchar> ::= '{any symbol but '}'
+<varchar> ::= '{any symbol but \' }'
 <const> ::= <value> | <name>
 
 <prior1> ::= (<prior6>) | const
