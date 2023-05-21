@@ -1,19 +1,14 @@
 #include "sqlparser.h"
 
-/*
-const std::vector<Query>& SqlParser::getQueries() const {
-    return queries_;
-}*/
-
-
 
 SqlParser::SqlParser(const std::string& input) {
     index_ = 0;
     input_ = input;
     correct_ = true;
+    Request();
 }
 
-bool SqlParser::isCorrect() const {
+bool SqlParser::isCorrect() {
     return correct_;
 }
 
@@ -22,7 +17,6 @@ bool SqlParser::isPunctuation(char c) {
     return std::find(punctuation_.begin(), punctuation_.end(), c) !=
            punctuation_.end();
 }
-
 
 void SqlParser::GetWord() {
     word_ = "";
@@ -39,10 +33,12 @@ void SqlParser::GetWord() {
     }
 }
 
-void SqlParser::GetChar() {
-    for (; index_ < input_.size(); ++index_) {
-        if (!std::isspace(input_[index_])) {
-            break;
+void SqlParser::GetChar(bool ignore = true) {
+    if (ignore) {
+        for (; index_ < input_.size(); ++index_) {
+            if (!std::isspace(input_[index_])) {
+                break;
+            }
         }
     }
     if (index_ < input_.size()) {
@@ -58,24 +54,40 @@ void SqlParser::PutChar() {
 }
 
 
+std::vector<Query*> SqlParser::getQueries() {
+    return queries_;
+}
+
 
 // --------------------------------------------
 
-void SqlParser::Query() {
+void SqlParser::Request() {
     for (;;) {
         GetWord();
         if (word_ == "CREATE") {
-            Create();
+            auto q = new СreateQuery;
+            Create(q);
+            queries_.push_back(q);
         } else if (word_ == "SELECT") {
-            Select();
+            auto q = new SelectQuery;
+            Select(q);
+            queries_.push_back(q);
         } else if (word_ == "UPDATE") {
-            Update();
+            auto q = new UpdateQuery;
+            Update(q);
+            queries_.push_back(q);
         } else if (word_ == "INSERT") {
-            Insert();
+            auto q = new InsertQuery;
+            Insert(q);
+            queries_.push_back(q);
         } else if (word_ == "DELETE") {
-            Delete();
+            auto q = new DeleteQuery;
+            Delete(q);
+            queries_.push_back(q);
         } else if (word_ == "DROP") {
-            Drop();
+            auto q = new DropQuery;
+            Drop(q);
+            queries_.push_back(q);
         } else if (word_.empty()) {
             return;
         } else {
@@ -87,110 +99,102 @@ void SqlParser::Query() {
 
 // ------------------ CREATE ------------------
 
-void SqlParser::Create() {
+void SqlParser::Create(СreateQuery* q) {
     GetWord();
     if (word_ != "TABLE") {
         correct_ = false;
         return;
     }
+    Name();
+    q->setTableName(word_);
     GetChar();
     if (char_ != '(') {
         correct_ = false;
         return;
     }
-    GetChar();
-    if (char_ == ')') {
-        return;
-    }
-    for (; char_ != '\0';) {
-        GetChar();
+
+    size_t count = 0;
+    do {
+        ColumnInfo cur_column;
         Name();
-
-        GetWord();
-        DataType();
-
-        Constraint();
-        GetChar();
-        if (char_ == ')') {
-            break;
+        std::string col_name = word_;
+        if (word_ == "FOREIGN") {
+            GetWord();
+            if (word_ == "KEY") {
+                ForeignKey();
+                GetChar();
+                continue;
+            }
+        } else {
+            GetWord();
         }
-    }
-
-    while (char_ == 'F') {
-        PutChar();
-        ForeignKey();
+        cur_column.type_ = DataType();
+        cur_column.number_ = count;
+        Constraint(cur_column);
         GetChar();
-    }
+        q->AddColumn(col_name, cur_column);
+        count++;
+    } while (char_ == ',');
 
     if (char_ != ')') {
         correct_ = false;
     }
 }
 
-void SqlParser::DataType() {
-    if (!(word_ == "FLOAT" || word_ == "INT" || word_ == "DOUBLE" ||
-          word_ == "BOOL" || word_ == "VARCHAR")) {
+Type SqlParser::DataType() {
+    Type p;
+    if (word_ == "INT") {
+        p = INT;
+    } else if (word_ == "DOUBLE") {
+        p = DOUBLE;
+    } else if (word_ == "BOOL") {
+        p = BOOL;
+    } else if (word_ == "VARCHAR") {
+        p = VARCHAR;
+    } else {
         correct_ = false;
-        return;
     }
-    if (word_ == "VARCHAR") {
-        VarcharType();
-    }
+    return p;
 }
 
-void SqlParser::VarcharType() {
-    GetChar();
-    if (char_ != '(') {
-        correct_ = false;
-        return;
-    }
-    Int();
-    if (char_ != ')') {
-        correct_ = false;
-        return;
-    }
-}
 
-void SqlParser::Constraint() {
-    GetWord();
-    if (word_ == "PRIMARY") {
+void SqlParser::Constraint(ColumnInfo& info) {
+    for (;;) {
         GetWord();
-        if (word_ != "KEY") {
-            correct_ = false;
+        if (word_ == "PRIMARY") {
+            GetWord();
+            if (word_ != "KEY") {
+                correct_ = false;
+                return;
+            }
+            info.primary_key_ = true;
+        } else if (word_ == "NOT") {
+            GetWord();
+            if (word_ != "NULL") {
+                correct_ = false;
+                return;
+            }
+            info.not_null_ = true;
+        } else if (word_ == "UNIQUE") {
+            info.unique_ = true;
+            continue;
+        } else if (word_ == "DEFAULT") {
+            info.default_ = true;
+            info.default_value_ = Value();
+        } else {
             return;
         }
-    } else if (word_ == "NOT") {
-        GetWord();
-        if (word_ != "NULL") {
-            correct_ = false;
-            return;
-        }
-    } else if (word_ == "UNIQUE") {
-        return;
-    } else if (word_ == "DEFAULT") {
-        Value();
     }
 }
 
 void SqlParser::ForeignKey() {
-    GetWord();
-    if (word_ != "FOREIGN") {
-        correct_ = false;
-        return;
-    }
-
-    GetWord();
-    if (word_ != "KEY") {
-        correct_ = false;
-        return;
-    }
-
     GetChar();
     if (char_ != '(') {
         correct_ = false;
         return;
     }
     Name();
+    GetChar();
     if (char_ != ')') {
         correct_ = false;
         return;
@@ -208,6 +212,7 @@ void SqlParser::ForeignKey() {
         return;
     }
     Name();
+    GetChar();
     if (char_ != ')') {
         correct_ = false;
         return;
@@ -216,67 +221,74 @@ void SqlParser::ForeignKey() {
 
 
 // ------------------ SELECT ------------------
-void SqlParser::Select() {
+void SqlParser::Select(SelectQuery* q) {
     GetChar();
     if (char_ != '*') {
         PutChar();
         Name();
+        q->AddColumn(word_);
         GetChar();
         while (char_ == ',') {
             Name();
+            q->AddColumn(word_);
             GetChar();
         }
         PutChar();
+    } else {
+        q->setAll();
     }
 
-    From();
+    From(q);
     GetChar();
     if (char_ == 'W') {
         PutChar();
-        Where();
+        q->setRpnWhere(Where());
     } else if (char_ != ';') {
         correct_ = false;
         return;
     }
 }
 
-void SqlParser::Where() {
+std::vector<rpn::lex> SqlParser::Where() {
     GetWord();
     if (word_ != "WHERE") {
         correct_ = false;
-        return;
+        return {};
     }
-    Prior6();
+    return Expression();
 }
 
-void SqlParser::From() {
+void SqlParser::From(SelectQuery* q) {
     GetWord();
     if (word_ != "FROM") {
         correct_ = false;
         return;
     }
     Name();
+    q->setTableName(word_);
     GetChar();
     if (char_ == 'I' || char_ == 'L' || char_ == 'R') {
         PutChar();
-        Join();
+        Join(q);
     } else {
         PutChar();
     }
 }
 
-void SqlParser::Join() {
+void SqlParser::Join(SelectQuery* q) {
     GetWord();
     if (!(word_ == "INNER" || word_ == "LEFT" || word_ == "RIGHT")) {
         correct_ = false;
         return;
     }
+    q->SetJoin(word_);
     GetWord();
     if (word_ != "JOIN") {
         correct_ = false;
         return;
     }
     Name();
+    q->setOtherName(word_);
     GetWord();
     if (word_ != "ON") {
         correct_ = false;
@@ -284,48 +296,42 @@ void SqlParser::Join() {
     }
 
     Name();
-    Compare();
-    Name();
-}
-
-void SqlParser::Compare() {
+    q->setKeyLeft(word_);
     GetChar();
-    if (char_ == '=') {
-        return;
-    } else if (char_ == '<') {
-        GetChar();
-        if (char_ != '>' || char_ != '=') {
-            PutChar();
-        }
-    } else if (char_ == '>') {
-        GetChar();
-        if (char_ != '=') {
-            PutChar();
-        }
-    } else {
+    if (char_ != '=') {
         correct_ = false;
         return;
     }
+    Name();
+    q->setKeyRight(word_);
 }
 
 
+
 // ------------------ UPDATE ------------------
-void SqlParser::Update() {
+void SqlParser::Update(UpdateQuery* info) {
     Name();
+    info->setTableName(word_);
     GetWord();
     if (word_ != "SET") {
         correct_ = false;
         return;
     }
-    KeyValue();
+
+    Name();
+    KeyValue(info);
     GetChar();
     while (char_ == ',') {
-        KeyValue();
+        Name();
+        if (word_ == "WHERE") {
+            break;
+        }
+        KeyValue(info);
         GetChar();
     }
-    if (char_ == 'W') {
-        PutChar();
-        Where();
+
+    if (word_ == "WHERE") {
+        info->setRpnExp(Expression());
         GetChar();
     }
     if (char_ != ';') {
@@ -334,24 +340,31 @@ void SqlParser::Update() {
 }
 
 // ------------------ INSERT ------------------
-void SqlParser::Insert() {
+void SqlParser::Insert(InsertQuery* info) {
     GetWord();
     if (word_ != "INTO") {
         correct_ = false;
         return;
     }
     Name();
+    info->setTableName(word_);
     GetChar();
     if (char_ != '(') {
         correct_ = false;
         return;
     }
-    GetChar();
-    while (char_ == ',') {
+
+    do {
         GetWord();
+        info->AddColumn(word_);
         GetChar();
+    } while (char_ == ',');
+
+    if (char_ != ')') {
+        correct_ = false;
+        return;
     }
-    PutChar();
+
     GetWord();
     if (word_ != "VALUES") {
         correct_ = false;
@@ -363,12 +376,12 @@ void SqlParser::Insert() {
         correct_ = false;
         return;
     }
-    Value();
-    GetChar();
-    while (char_ == ',') {
-        Value();
+    do {
+        auto v = Value();
+        info->AddValue(v);
         GetChar();
-    }
+    } while (char_ == ',');
+
     if (char_ != ')') {
         correct_ = false;
         return;
@@ -380,32 +393,34 @@ void SqlParser::Insert() {
 }
 
 // ------------------ DELETE ------------------
-void SqlParser::Delete() {
+void SqlParser::Delete(DeleteQuery* info) {
     GetWord();
     if (word_ != "FROM") {
         correct_ = false;
         return;
     }
     Name();
+    info->setTableName(word_);
     GetChar();
     if (char_ == ';') {
         return;
     } else if (char_ == 'W') {
         PutChar();
-        Where();
+        info->setRpnExp(Where());
     } else {
         correct_ = false;
     }
 }
 
 // ------------------ DROP ------------------
-void SqlParser::Drop() {
+void SqlParser::Drop(DropQuery* info) {
     GetWord();
     if (word_ != "TABLE") {
         correct_ = false;
         return;
     }
     Name();
+    info->setTableName(word_);
     GetChar();
     if (char_ != ';') {
         correct_ = false;
@@ -413,97 +428,102 @@ void SqlParser::Drop() {
 }
 
 // --------------- Expressions --------------
-void SqlParser::KeyValue() {
-    Name();
+void SqlParser::KeyValue(UpdateQuery* info) {
+    info->AddColumn(word_);
     GetChar();
     if (char_ != '=') {
         correct_ = false;
         return;
     }
-    Prior6();
+    info->AddValueExp(Expression());
 }
 
 void SqlParser::Name() {
     GetWord();
-}
-
-void SqlParser::Value() {
-    GetChar();
-    if (char_ == ',') {
-        Varchar();
-    } else if (char_ == 't' || char_ == 'f') {
-        PutChar();
-        Bool();
-    } else {
-        // todo int float
+    if (word_.empty()) {
+        correct_ = false;
     }
 }
 
-void SqlParser::Bool() {
+T SqlParser::Value() {
+    GetChar();
+    if (char_ == '\'') {
+        return Varchar();
+    } else if (char_ == 't' || char_ == 'f') {
+        PutChar();
+        return Bool();
+    } else {
+        PutChar();
+        return Number();
+    }
+}
+
+bool SqlParser::Bool() {
     GetWord();
     if (word_ != "true" && word_ != "false") {
         correct_ = false;
     }
+    return (word_ == "true");
 }
 
-void SqlParser::Int() {
-    // todo
-}
-
-void SqlParser::Float() {
-    // todo
-}
-
-void SqlParser::Varchar() {
+T SqlParser::Number() {
+    size_t beg = index_;
     GetChar();
-    while (char_ != '\'') {
+    if (char_ == '+' || char_ == '-') { // SIGN
         GetChar();
+    }
+    if (!std::isdigit(char_)) {
+        correct_ = false;
+        return 0;
+    }
+    while (std::isdigit(char_)) {
+        GetChar();
+    }
+
+    bool is_double  = false;
+    if (char_ == '.') { // double
+        is_double = true;
+        GetChar();
+        if (!std::isdigit(char_)) {
+            correct_ = false;
+        }
+        while (std::isdigit(char_)) {
+            GetChar();
+        }
+    }
+    PutChar();
+    size_t end = index_;
+    std::string tmp = input_.substr(beg, end - beg);
+    if (is_double) {
+        return std::stod(tmp);
+    } else {
+        return std::stoi(tmp);
+    }
+}
+
+std::string SqlParser::Varchar() {
+    std::string result;
+    GetChar(false);
+    while (char_ != '\'' && char_ != '\0') {
+        result += char_;
+        GetChar(false);
     }
     if (char_ != '\'') {
         correct_ = false;
     }
+    return result;
 }
 
-void SqlParser::Const() {
-    GetChar();
-    if (char_ == '-' || char_ == '+') {
-        PutChar();
-        Int(); // todo float?
-    } else if (char_ == '\'') {
-        Name();
-    } else {
-        PutChar();
-        GetWord();
-        if (word_ == "true" || word_ == "false") {
-            // bool
-        } else {
-            correct_ = false;
+std::vector<rpn::lex> SqlParser::Expression() {
+    size_t index = input_.size();
+    for (size_t i = index_; i < input_.size(); ++i) {
+        if (input_[i] == ';' || input_[i] == ',') {
+            index = i;
+            break;
         }
     }
-
+    std::string expression = input_.substr(index_, index - index_);
+    index_ = index;
+    auto rpn_exp = rpn::GetRpn(expression);
+    return rpn_exp;
 }
-
-void SqlParser::Prior1() {
-
-}
-
-void SqlParser::Prior2() {
-
-}
-
-void SqlParser::Prior3() {
-
-}
-
-void SqlParser::Prior4() {
-
-}
-
-void SqlParser::Prior5() {
-
-}
-
-void SqlParser::Prior6() {
-
-}
-

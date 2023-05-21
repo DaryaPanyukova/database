@@ -1,81 +1,65 @@
 #pragma once
 
-#include <vector>
-#include <string>
 #include <algorithm>
+#include <string>
+#include <vector>
+
+#include "create_query.h"
+#include "drop_query.h"
+#include "delete_query.h"
+#include "insert_query.h"
+#include "select_query.h"
+#include "update_query.h"
 
 class SqlParser {
+public:
+    SqlParser(const std::string& input);
+
+    bool isCorrect();
+
+    std::vector<Query*> getQueries();
+
 private:
     const std::vector<char> punctuation_{';', ',', '\'', '(', ')', '+', '-',
-                                         '/', '*', '%'};
+                                         '/', '*', '%', '='};
 
     std::string input_;
     bool correct_;
     std::string word_;
     char char_;
     size_t index_;
-    // std::vector <Query> queries_; // запросы во внутреннем представлении
-
+    std::vector<Query*> queries_; // запросы во внутреннем представлении
 
     bool isPunctuation(char);
 
-
     void GetWord();
-    void GetChar();
+    void GetChar(bool);
     void PutChar();
 
+    void Request();
 
-    void Query();
-
-    void Create();
-    void DataType();
-    void VarcharType();
-    void Constraint();
+    void Create(СreateQuery*);
+    Type DataType();
+    void Constraint(ColumnInfo&);
     void ForeignKey();
 
-    void Select();
-    void Where();
-    void From();
-    void Join();
-    void Compare();
+    void Select(SelectQuery*);
+    std::vector<rpn::lex> Where();
+    void From(SelectQuery*);
+    void Join(SelectQuery*);
 
-    void Update();
+    void Update(UpdateQuery*);
+    void Insert(InsertQuery*);
+    void Delete(DeleteQuery*);
+    void Drop(DropQuery*);
 
-    void Insert();
-
-    void Delete();
-
-    void Drop();
-
-    void KeyValue();
+    void KeyValue(UpdateQuery*);
     void Name();
-    void Value();
+    T Value();
 
-    void Bool();
-    void Int();
-    void Float();
-    void Varchar();
-    void Const();
+    bool Bool();
+    T Number();
+    std::string Varchar();
 
-    void Prior1();
-
-    void Prior2();
-
-    void Prior3();
-
-    void Prior4();
-
-    void Prior5();
-
-    void Prior6();
-
-public:
-    SqlParser(const std::string& input);
-
-    bool isCorrect() const;
-
-
-    /*
-    const std::vector<Query>& getQueries() const;
-     */
+    std::vector<rpn::lex> Expression();
 };

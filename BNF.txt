@@ -6,24 +6,23 @@
 
 
 <create> ::= CREATE TABLE <name> ( {<name> <data_type> {<constraint>} {,<name> <data_type> {<constraint>}} {<foreign_key>})
-<data_type> ::= <varchar_type> | FLOAT | INT | BOOL | DOUBLE
-<varchar_type> ::= VARCHAR ( <int> )
+<data_type> ::= <varchar_type> | FLOAT | INT | BOOL | DOUBLE | VARCHAR
 <constraint> ::= PRIMARY KEY | UNIQUE | NOT NULL | DEFAULT <value>
 <foreign_key> ::= FOREIGN KEY (<name>) REFERENCES <name> (<name>)
 
 
 <select> ::= SELECT (* | SELECT <name> {,<name>}) <from> [<where>]
-<where> ::= WHERE <prior6>
+<where> ::= WHERE <exp>
 <from> ::= FROM <name> [<join>]
 <join> ::= INNER|LEFT|RIGHT JOIN <name> ON <name> = <name>
 
 
-<update> ::= UPDATE <name> SET <key_value> {,<key_value>} [<where>]
+<update> ::= UPDATE <name> SET <key_value> {,<key_value>} [,<where>]
 <insert> ::= INSERT INTO <name> (<name> {, <name>}) VALUES (<value> {, <value>})
 <delete> ::= DELETE FROM <name> [<where>]
 <drop> ::= DROP TABLE <name>
 
-<key_value> ::= <name> = <prior6>
+<key_value> ::= <name> = <exp>
 <name> ::= 'anything at all'
 <value> ::= <bool> | <int> | <float> | <varchar>
 <bool> ::= true | false
@@ -32,10 +31,6 @@
 <varchar> ::= '{any symbol but \' }'
 <const> ::= <value> | <name>
 
-<prior1> ::= (<prior6>) | const
-<prior2> ::= <prior1>*<prior2> | <prior1>/<prior2> | <prior1>%<prior2> | <prior2>
-<prior3> ::= <Prior2>+<Prior3> | <Prior2>-<Prior3> | <Prior2>
-<prior4> ::= <prior3> > <prior4> | <prior3> < <prior4> | <prior3> <> <prior4> | <prior3> = <prior4> | <prior3> [IS [NOT] NULL]
-<prior5> ::= <prior4> AND <prior5> | <prior4>
-<prior6> ::= <prior5> OR <prior6> | <prior5>
+
+<exp> ::= (rpn)
 
