@@ -77,10 +77,10 @@ Table Database::Request(const std::string& input) {
 
     std::string last;
     std::vector<Query*> queries = p.getQueries();
-    for (size_t i = 0; i < queries.size(); ++i) {
-        Query* q = queries[i];
+    for (auto & querie : queries) {
+        Query* q = querie;
         last = q->getTableName();
-        if (!queries[i]->Execute(tables_)) {
+        if (!querie->Execute(tables_)) {
             correct_ = false;
             return {};
         }

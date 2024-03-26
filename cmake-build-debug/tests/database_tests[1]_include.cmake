@@ -1,0 +1,5 @@
+if(EXISTS "D:/ITMOlabs/basics_c++/labwork-12-DaryaPanyukova/cmake-build-debug/tests/database_tests[1]_tests.cmake")
+  include("D:/ITMOlabs/basics_c++/labwork-12-DaryaPanyukova/cmake-build-debug/tests/database_tests[1]_tests.cmake")
+else()
+  add_test(database_tests_NOT_BUILT database_tests_NOT_BUILT)
+endif()

@@ -1,0 +1,462 @@
+Start testing: Jun 03 15:42 RTZ 2 (ceia)
+----------------------------------------------------------
+1/17 Testing: TestSelect.All
+1/17 Test: TestSelect.All
+Command: "D:/ITMOlabs/basics_c++/labwork-12-DaryaPanyukova/cmake-build-debug/tests/database_tests.exe" "--gtest_filter=TestSelect.All" "--gtest_also_run_disabled_tests"
+Directory: D:/ITMOlabs/basics_c++/labwork-12-DaryaPanyukova/cmake-build-debug/tests
+"TestSelect.All" start time: Jun 03 15:42 RTZ 2 (ceia)
+Output:
+----------------------------------------------------------
+Running main() from D:/ITMOlabs/basics_c++/labwork-12-DaryaPanyukova/cmake-build-debug/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = TestSelect.All
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from TestSelect
+[ RUN      ] TestSelect.All
+[       OK ] TestSelect.All (0 ms)
+[----------] 1 test from TestSelect (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.02 sec
+----------------------------------------------------------
+Test Passed.
+"TestSelect.All" end time: Jun 03 15:42 RTZ 2 (ceia)
+"TestSelect.All" time elapsed: 00:00:00
+----------------------------------------------------------
+
+2/17 Testing: TestSelect.Column
+2/17 Test: TestSelect.Column
+Command: "D:/ITMOlabs/basics_c++/labwork-12-DaryaPanyukova/cmake-build-debug/tests/database_tests.exe" "--gtest_filter=TestSelect.Column" "--gtest_also_run_disabled_tests"
+Directory: D:/ITMOlabs/basics_c++/labwork-12-DaryaPanyukova/cmake-build-debug/tests
+"TestSelect.Column" start time: Jun 03 15:42 RTZ 2 (ceia)
+Output:
+----------------------------------------------------------
+Running main() from D:/ITMOlabs/basics_c++/labwork-12-DaryaPanyukova/cmake-build-debug/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = TestSelect.Column
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from TestSelect
+[ RUN      ] TestSelect.Column
+[       OK ] TestSelect.Column (1 ms)
+[----------] 1 test from TestSelect (1 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (2 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.03 sec
+----------------------------------------------------------
+Test Passed.
+"TestSelect.Column" end time: Jun 03 15:42 RTZ 2 (ceia)
+"TestSelect.Column" time elapsed: 00:00:00
+----------------------------------------------------------
+
+3/17 Testing: TestSelect.Where
+3/17 Test: TestSelect.Where
+Command: "D:/ITMOlabs/basics_c++/labwork-12-DaryaPanyukova/cmake-build-debug/tests/database_tests.exe" "--gtest_filter=TestSelect.Where" "--gtest_also_run_disabled_tests"
+Directory: D:/ITMOlabs/basics_c++/labwork-12-DaryaPanyukova/cmake-build-debug/tests
+"TestSelect.Where" start time: Jun 03 15:42 RTZ 2 (ceia)
+Output:
+----------------------------------------------------------
+Running main() from D:/ITMOlabs/basics_c++/labwork-12-DaryaPanyukova/cmake-build-debug/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = TestSelect.Where
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from TestSelect
+[ RUN      ] TestSelect.Where
+[       OK ] TestSelect.Where (2 ms)
+[----------] 1 test from TestSelect (2 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (3 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.06 sec
+----------------------------------------------------------
+Test Passed.
+"TestSelect.Where" end time: Jun 03 15:42 RTZ 2 (ceia)
+"TestSelect.Where" time elapsed: 00:00:00
+----------------------------------------------------------
+
+4/17 Testing: TestSelect.WhereExpression
+4/17 Test: TestSelect.WhereExpression
+Command: "D:/ITMOlabs/basics_c++/labwork-12-DaryaPanyukova/cmake-build-debug/tests/database_tests.exe" "--gtest_filter=TestSelect.WhereExpression" "--gtest_also_run_disabled_tests"
+Directory: D:/ITMOlabs/basics_c++/labwork-12-DaryaPanyukova/cmake-build-debug/tests
+"TestSelect.WhereExpression" start time: Jun 03 15:42 RTZ 2 (ceia)
+Output:
+----------------------------------------------------------
+Running main() from D:/ITMOlabs/basics_c++/labwork-12-DaryaPanyukova/cmake-build-debug/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = TestSelect.WhereExpression
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from TestSelect
+[ RUN      ] TestSelect.WhereExpression
+[       OK ] TestSelect.WhereExpression (0 ms)
+[----------] 1 test from TestSelect (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.14 sec
+----------------------------------------------------------
+Test Passed.
+"TestSelect.WhereExpression" end time: Jun 03 15:42 RTZ 2 (ceia)
+"TestSelect.WhereExpression" time elapsed: 00:00:00
+----------------------------------------------------------
+
+5/17 Testing: TestSelect.Join
+5/17 Test: TestSelect.Join
+Command: "D:/ITMOlabs/basics_c++/labwork-12-DaryaPanyukova/cmake-build-debug/tests/database_tests.exe" "--gtest_filter=TestSelect.Join" "--gtest_also_run_disabled_tests"
+Directory: D:/ITMOlabs/basics_c++/labwork-12-DaryaPanyukova/cmake-build-debug/tests
+"TestSelect.Join" start time: Jun 03 15:42 RTZ 2 (ceia)
+Output:
+----------------------------------------------------------
+Running main() from D:/ITMOlabs/basics_c++/labwork-12-DaryaPanyukova/cmake-build-debug/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = TestSelect.Join
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from TestSelect
+[ RUN      ] TestSelect.Join
+[       OK ] TestSelect.Join (0 ms)
+[----------] 1 test from TestSelect (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.05 sec
+----------------------------------------------------------
+Test Passed.
+"TestSelect.Join" end time: Jun 03 15:42 RTZ 2 (ceia)
+"TestSelect.Join" time elapsed: 00:00:00
+----------------------------------------------------------
+
+6/17 Testing: TestCreate.All
+6/17 Test: TestCreate.All
+Command: "D:/ITMOlabs/basics_c++/labwork-12-DaryaPanyukova/cmake-build-debug/tests/database_tests.exe" "--gtest_filter=TestCreate.All" "--gtest_also_run_disabled_tests"
+Directory: D:/ITMOlabs/basics_c++/labwork-12-DaryaPanyukova/cmake-build-debug/tests
+"TestCreate.All" start time: Jun 03 15:42 RTZ 2 (ceia)
+Output:
+----------------------------------------------------------
+Running main() from D:/ITMOlabs/basics_c++/labwork-12-DaryaPanyukova/cmake-build-debug/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = TestCreate.All
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from TestCreate
+[ RUN      ] TestCreate.All
+[       OK ] TestCreate.All (0 ms)
+[----------] 1 test from TestCreate (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.06 sec
+----------------------------------------------------------
+Test Passed.
+"TestCreate.All" end time: Jun 03 15:42 RTZ 2 (ceia)
+"TestCreate.All" time elapsed: 00:00:00
+----------------------------------------------------------
+
+7/17 Testing: TestCreate.Constraints
+7/17 Test: TestCreate.Constraints
+Command: "D:/ITMOlabs/basics_c++/labwork-12-DaryaPanyukova/cmake-build-debug/tests/database_tests.exe" "--gtest_filter=TestCreate.Constraints" "--gtest_also_run_disabled_tests"
+Directory: D:/ITMOlabs/basics_c++/labwork-12-DaryaPanyukova/cmake-build-debug/tests
+"TestCreate.Constraints" start time: Jun 03 15:42 RTZ 2 (ceia)
+Output:
+----------------------------------------------------------
+Running main() from D:/ITMOlabs/basics_c++/labwork-12-DaryaPanyukova/cmake-build-debug/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = TestCreate.Constraints
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from TestCreate
+[ RUN      ] TestCreate.Constraints
+[       OK ] TestCreate.Constraints (1 ms)
+[----------] 1 test from TestCreate (1 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (2 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.03 sec
+----------------------------------------------------------
+Test Passed.
+"TestCreate.Constraints" end time: Jun 03 15:42 RTZ 2 (ceia)
+"TestCreate.Constraints" time elapsed: 00:00:00
+----------------------------------------------------------
+
+8/17 Testing: TestCreate.ForeignKey
+8/17 Test: TestCreate.ForeignKey
+Command: "D:/ITMOlabs/basics_c++/labwork-12-DaryaPanyukova/cmake-build-debug/tests/database_tests.exe" "--gtest_filter=TestCreate.ForeignKey" "--gtest_also_run_disabled_tests"
+Directory: D:/ITMOlabs/basics_c++/labwork-12-DaryaPanyukova/cmake-build-debug/tests
+"TestCreate.ForeignKey" start time: Jun 03 15:42 RTZ 2 (ceia)
+Output:
+----------------------------------------------------------
+Running main() from D:/ITMOlabs/basics_c++/labwork-12-DaryaPanyukova/cmake-build-debug/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = TestCreate.ForeignKey
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from TestCreate
+[ RUN      ] TestCreate.ForeignKey
+[       OK ] TestCreate.ForeignKey (0 ms)
+[----------] 1 test from TestCreate (1 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (1 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.04 sec
+----------------------------------------------------------
+Test Passed.
+"TestCreate.ForeignKey" end time: Jun 03 15:42 RTZ 2 (ceia)
+"TestCreate.ForeignKey" time elapsed: 00:00:00
+----------------------------------------------------------
+
+9/17 Testing: TestUpdate.Simple
+9/17 Test: TestUpdate.Simple
+Command: "D:/ITMOlabs/basics_c++/labwork-12-DaryaPanyukova/cmake-build-debug/tests/database_tests.exe" "--gtest_filter=TestUpdate.Simple" "--gtest_also_run_disabled_tests"
+Directory: D:/ITMOlabs/basics_c++/labwork-12-DaryaPanyukova/cmake-build-debug/tests
+"TestUpdate.Simple" start time: Jun 03 15:42 RTZ 2 (ceia)
+Output:
+----------------------------------------------------------
+Running main() from D:/ITMOlabs/basics_c++/labwork-12-DaryaPanyukova/cmake-build-debug/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = TestUpdate.Simple
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from TestUpdate
+[ RUN      ] TestUpdate.Simple
+[       OK ] TestUpdate.Simple (0 ms)
+[----------] 1 test from TestUpdate (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.03 sec
+----------------------------------------------------------
+Test Passed.
+"TestUpdate.Simple" end time: Jun 03 15:42 RTZ 2 (ceia)
+"TestUpdate.Simple" time elapsed: 00:00:00
+----------------------------------------------------------
+
+10/17 Testing: TestUpdate.Expression
+10/17 Test: TestUpdate.Expression
+Command: "D:/ITMOlabs/basics_c++/labwork-12-DaryaPanyukova/cmake-build-debug/tests/database_tests.exe" "--gtest_filter=TestUpdate.Expression" "--gtest_also_run_disabled_tests"
+Directory: D:/ITMOlabs/basics_c++/labwork-12-DaryaPanyukova/cmake-build-debug/tests
+"TestUpdate.Expression" start time: Jun 03 15:42 RTZ 2 (ceia)
+Output:
+----------------------------------------------------------
+Running main() from D:/ITMOlabs/basics_c++/labwork-12-DaryaPanyukova/cmake-build-debug/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = TestUpdate.Expression
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from TestUpdate
+[ RUN      ] TestUpdate.Expression
+[       OK ] TestUpdate.Expression (2 ms)
+[----------] 1 test from TestUpdate (2 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (2 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.04 sec
+----------------------------------------------------------
+Test Passed.
+"TestUpdate.Expression" end time: Jun 03 15:42 RTZ 2 (ceia)
+"TestUpdate.Expression" time elapsed: 00:00:00
+----------------------------------------------------------
+
+11/17 Testing: TestUpdate.Where
+11/17 Test: TestUpdate.Where
+Command: "D:/ITMOlabs/basics_c++/labwork-12-DaryaPanyukova/cmake-build-debug/tests/database_tests.exe" "--gtest_filter=TestUpdate.Where" "--gtest_also_run_disabled_tests"
+Directory: D:/ITMOlabs/basics_c++/labwork-12-DaryaPanyukova/cmake-build-debug/tests
+"TestUpdate.Where" start time: Jun 03 15:42 RTZ 2 (ceia)
+Output:
+----------------------------------------------------------
+Running main() from D:/ITMOlabs/basics_c++/labwork-12-DaryaPanyukova/cmake-build-debug/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = TestUpdate.Where
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from TestUpdate
+[ RUN      ] TestUpdate.Where
+[       OK ] TestUpdate.Where (2 ms)
+[----------] 1 test from TestUpdate (2 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (2 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.03 sec
+----------------------------------------------------------
+Test Passed.
+"TestUpdate.Where" end time: Jun 03 15:42 RTZ 2 (ceia)
+"TestUpdate.Where" time elapsed: 00:00:00
+----------------------------------------------------------
+
+12/17 Testing: TestInsert.Simple
+12/17 Test: TestInsert.Simple
+Command: "D:/ITMOlabs/basics_c++/labwork-12-DaryaPanyukova/cmake-build-debug/tests/database_tests.exe" "--gtest_filter=TestInsert.Simple" "--gtest_also_run_disabled_tests"
+Directory: D:/ITMOlabs/basics_c++/labwork-12-DaryaPanyukova/cmake-build-debug/tests
+"TestInsert.Simple" start time: Jun 03 15:42 RTZ 2 (ceia)
+Output:
+----------------------------------------------------------
+Running main() from D:/ITMOlabs/basics_c++/labwork-12-DaryaPanyukova/cmake-build-debug/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = TestInsert.Simple
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from TestInsert
+[ RUN      ] TestInsert.Simple
+[       OK ] TestInsert.Simple (0 ms)
+[----------] 1 test from TestInsert (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.03 sec
+----------------------------------------------------------
+Test Passed.
+"TestInsert.Simple" end time: Jun 03 15:42 RTZ 2 (ceia)
+"TestInsert.Simple" time elapsed: 00:00:00
+----------------------------------------------------------
+
+13/17 Testing: TestInsert.NotNull
+13/17 Test: TestInsert.NotNull
+Command: "D:/ITMOlabs/basics_c++/labwork-12-DaryaPanyukova/cmake-build-debug/tests/database_tests.exe" "--gtest_filter=TestInsert.NotNull" "--gtest_also_run_disabled_tests"
+Directory: D:/ITMOlabs/basics_c++/labwork-12-DaryaPanyukova/cmake-build-debug/tests
+"TestInsert.NotNull" start time: Jun 03 15:42 RTZ 2 (ceia)
+Output:
+----------------------------------------------------------
+Running main() from D:/ITMOlabs/basics_c++/labwork-12-DaryaPanyukova/cmake-build-debug/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = TestInsert.NotNull
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from TestInsert
+[ RUN      ] TestInsert.NotNull
+[       OK ] TestInsert.NotNull (0 ms)
+[----------] 1 test from TestInsert (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.04 sec
+----------------------------------------------------------
+Test Passed.
+"TestInsert.NotNull" end time: Jun 03 15:42 RTZ 2 (ceia)
+"TestInsert.NotNull" time elapsed: 00:00:00
+----------------------------------------------------------
+
+14/17 Testing: TestInsert.Default
+14/17 Test: TestInsert.Default
+Command: "D:/ITMOlabs/basics_c++/labwork-12-DaryaPanyukova/cmake-build-debug/tests/database_tests.exe" "--gtest_filter=TestInsert.Default" "--gtest_also_run_disabled_tests"
+Directory: D:/ITMOlabs/basics_c++/labwork-12-DaryaPanyukova/cmake-build-debug/tests
+"TestInsert.Default" start time: Jun 03 15:42 RTZ 2 (ceia)
+Output:
+----------------------------------------------------------
+Running main() from D:/ITMOlabs/basics_c++/labwork-12-DaryaPanyukova/cmake-build-debug/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = TestInsert.Default
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from TestInsert
+[ RUN      ] TestInsert.Default
+[       OK ] TestInsert.Default (0 ms)
+[----------] 1 test from TestInsert (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.03 sec
+----------------------------------------------------------
+Test Passed.
+"TestInsert.Default" end time: Jun 03 15:42 RTZ 2 (ceia)
+"TestInsert.Default" time elapsed: 00:00:00
+----------------------------------------------------------
+
+15/17 Testing: TestInsert.Unique
+15/17 Test: TestInsert.Unique
+Command: "D:/ITMOlabs/basics_c++/labwork-12-DaryaPanyukova/cmake-build-debug/tests/database_tests.exe" "--gtest_filter=TestInsert.Unique" "--gtest_also_run_disabled_tests"
+Directory: D:/ITMOlabs/basics_c++/labwork-12-DaryaPanyukova/cmake-build-debug/tests
+"TestInsert.Unique" start time: Jun 03 15:42 RTZ 2 (ceia)
+Output:
+----------------------------------------------------------
+Running main() from D:/ITMOlabs/basics_c++/labwork-12-DaryaPanyukova/cmake-build-debug/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = TestInsert.Unique
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from TestInsert
+[ RUN      ] TestInsert.Unique
+[       OK ] TestInsert.Unique (0 ms)
+[----------] 1 test from TestInsert (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.03 sec
+----------------------------------------------------------
+Test Passed.
+"TestInsert.Unique" end time: Jun 03 15:42 RTZ 2 (ceia)
+"TestInsert.Unique" time elapsed: 00:00:00
+----------------------------------------------------------
+
+16/17 Testing: TestDelete.Simple
+16/17 Test: TestDelete.Simple
+Command: "D:/ITMOlabs/basics_c++/labwork-12-DaryaPanyukova/cmake-build-debug/tests/database_tests.exe" "--gtest_filter=TestDelete.Simple" "--gtest_also_run_disabled_tests"
+Directory: D:/ITMOlabs/basics_c++/labwork-12-DaryaPanyukova/cmake-build-debug/tests
+"TestDelete.Simple" start time: Jun 03 15:42 RTZ 2 (ceia)
+Output:
+----------------------------------------------------------
+Running main() from D:/ITMOlabs/basics_c++/labwork-12-DaryaPanyukova/cmake-build-debug/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = TestDelete.Simple
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from TestDelete
+[ RUN      ] TestDelete.Simple
+[       OK ] TestDelete.Simple (0 ms)
+[----------] 1 test from TestDelete (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.03 sec
+----------------------------------------------------------
+Test Passed.
+"TestDelete.Simple" end time: Jun 03 15:42 RTZ 2 (ceia)
+"TestDelete.Simple" time elapsed: 00:00:00
+----------------------------------------------------------
+
+17/17 Testing: TestDrop.Simple
+17/17 Test: TestDrop.Simple
+Command: "D:/ITMOlabs/basics_c++/labwork-12-DaryaPanyukova/cmake-build-debug/tests/database_tests.exe" "--gtest_filter=TestDrop.Simple" "--gtest_also_run_disabled_tests"
+Directory: D:/ITMOlabs/basics_c++/labwork-12-DaryaPanyukova/cmake-build-debug/tests
+"TestDrop.Simple" start time: Jun 03 15:42 RTZ 2 (ceia)
+Output:
+----------------------------------------------------------
+Running main() from D:/ITMOlabs/basics_c++/labwork-12-DaryaPanyukova/cmake-build-debug/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = TestDrop.Simple
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from TestDrop
+[ RUN      ] TestDrop.Simple
+[       OK ] TestDrop.Simple (0 ms)
+[----------] 1 test from TestDrop (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 1 test.
+<end of output>
+Test time =   0.04 sec
+----------------------------------------------------------
+Test Passed.
+"TestDrop.Simple" end time: Jun 03 15:42 RTZ 2 (ceia)
+"TestDrop.Simple" time elapsed: 00:00:00
+----------------------------------------------------------
+
+End testing: Jun 03 15:42 RTZ 2 (ceia)

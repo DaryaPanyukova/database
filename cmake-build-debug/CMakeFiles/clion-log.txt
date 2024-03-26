@@ -1,0 +1,5 @@
+D:\CLion\bin\cmake\win\bin\cmake.exe -DCMAKE_BUILD_TYPE=Debug -DCMAKE_MAKE_PROGRAM=D:/CLion/bin/ninja/win/ninja.exe -G Ninja D:\ITMOlabs\basics_c++\labwork-12-DaryaPanyukova
+-- Could NOT find Python (missing: Python_EXECUTABLE Interpreter) 
+-- Configuring done
+-- Generating done
+-- Build files have been written to: D:/ITMOlabs/basics_c++/labwork-12-DaryaPanyukova/cmake-build-debug
